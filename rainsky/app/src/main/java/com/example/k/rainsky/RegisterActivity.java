@@ -20,6 +20,7 @@ import static com.example.k.rainsky.R.id.regName;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private AlertDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,19 +47,20 @@ public class RegisterActivity extends AppCompatActivity {
                             boolean success = jsonResponse.getBoolean("success");
                             if(success){
                                 AlertDialog.Builder builder=new AlertDialog.Builder(RegisterActivity.this);
-                                builder.setMessage("회원 등록에 성공했습니다.")
+                                dialog=builder.setMessage("회원 등록에 성공했습니다.")
                                         .setPositiveButton("확인",null)
-                                        .create()
-                                        .show();
+                                        .create();
+                                dialog.show();
                                 Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                                 RegisterActivity.this.startActivity(intent);
+                                finish();
                             }
                             else{
                                 AlertDialog.Builder builder=new AlertDialog.Builder(RegisterActivity.this);
-                                builder.setMessage("회원 등록에 실패했습니다.")
+                                dialog=builder.setMessage("회원 등록에 실패했습니다.")
                                         .setNegativeButton("다시 시도",null)
-                                        .create()
-                                        .show();
+                                        .create();
+                                dialog.show();
                             }
                         }
                         catch(JSONException e){
@@ -72,5 +74,12 @@ public class RegisterActivity extends AppCompatActivity {
                 queue.add(registerRequest);
             }
         });
+    }
+    protected void onStop(){
+        super.onStop();
+        if(dialog!=null){
+            dialog.dismiss();
+            dialog=null;
+        }
     }
 }

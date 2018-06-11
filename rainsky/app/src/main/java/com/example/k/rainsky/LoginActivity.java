@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private AlertDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,20 +48,21 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean sucess=jsonResponse.getBoolean("success");
                             if(sucess){
-                                String id=jsonResponse.getString("id");
-                                String pw=jsonResponse.getString("pw");
-
+                                AlertDialog.Builder builder =new AlertDialog.Builder(LoginActivity.this);
+                                dialog=builder.setMessage("로그인에 성공하였습니다.")
+                                        .setPositiveButton("확인",null)
+                                        .create();
+                                dialog.show();
                                 Intent intent= new Intent(LoginActivity.this,MainActivity.class);
-                                intent.putExtra("id",id);
-                                intent.putExtra("pw",pw);
                                 LoginActivity.this.startActivity(intent);
+                                finish();
                             }
                             else{
                                 AlertDialog.Builder builder =new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("로그인에 실패하였습니다.")
+                                dialog=builder.setMessage("계정을 다시 확인하세요.")
                                         .setNegativeButton("다시 시도",null)
-                                        .create()
-                                        .show();
+                                        .create();
+                                dialog.show();
                             }
                         }
                         catch(Exception e){
@@ -74,5 +76,12 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+    protected void onStop(){
+        super.onStop();
+        if(dialog!=null){
+            dialog.dismiss();
+            dialog=null;
+        }
     }
 }
