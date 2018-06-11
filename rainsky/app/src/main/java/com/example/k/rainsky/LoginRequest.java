@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class LoginRequest extends StringRequest {
 
-    final static private String URL = "";
+    final static private String URL = "http://multiple.iptime.org/web/Login.php";
     private Map<String, String> parameters;
 
     public LoginRequest(String userID, String userPassword, Response.Listener<String>listener) {

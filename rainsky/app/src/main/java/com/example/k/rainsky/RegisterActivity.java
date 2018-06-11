@@ -15,6 +15,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static com.example.k.rainsky.R.id.regName;
+
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
@@ -25,14 +27,15 @@ public class RegisterActivity extends AppCompatActivity {
 
         final EditText regId= (EditText) findViewById(R.id.regId);
         final EditText regPw= (EditText) findViewById(R.id.regPw);
-        final EditText regPwchk= (EditText) findViewById(R.id.regPwchk);
+        final EditText regName = (EditText) findViewById(R.id.regName);
         final Button regGo= (Button) findViewById(R.id.regGo);
 
         regGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userID=regId.getText().toString();
-                String userPassword=regPw.getText().toString();
+                String id=regId.getText().toString();
+                String pw=regPw.getText().toString();
+                String name=regName.getText().toString();
 
                 Response.Listener<String > responseListener=new Response.Listener<String>() {
                     @Override
@@ -63,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     }
                 };
-                RegisterRequest registerRequest= new RegisterRequest(userID,userPassword,responseListener);
+                RegisterRequest registerRequest= new RegisterRequest(id,name,pw,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
             }

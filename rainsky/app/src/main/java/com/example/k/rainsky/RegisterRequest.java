@@ -8,14 +8,15 @@ import java.util.Map;
 
 public class RegisterRequest extends StringRequest {
 
-    final static private String URL = "";
+    final static private String URL = "http://multiple.iptime.org/web/Register.php";
     private Map<String, String> parameters;
 
-    public RegisterRequest(String userID, String userPassword,Response.Listener<String>listener) {
+    public RegisterRequest(String id, String name,String pw,Response.Listener<String>listener) {
         super(Method.POST,URL,listener,null);
         parameters=new HashMap<>();
-        parameters.put("userID",userID);
-        parameters.put("userPassword",userPassword);
+        parameters.put("id",id);
+        parameters.put("name",name);
+        parameters.put("pw",pw);
 
     }
 
