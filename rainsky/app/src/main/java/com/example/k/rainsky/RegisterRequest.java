@@ -20,7 +20,7 @@ public class RegisterRequest extends StringRequest {
 
     }
 
-    public Map<String, String> getParameters() {
+    public Map<String, String> getParams() {
         return parameters;
     }
 }

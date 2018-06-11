@@ -15,6 +15,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static com.android.volley.toolbox.Volley.newRequestQueue;
 import static com.example.k.rainsky.R.id.regName;
 
 public class RegisterActivity extends AppCompatActivity {
