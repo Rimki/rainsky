@@ -21,8 +21,10 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent=getIntent();
 
         noticeListView = (ListView) findViewById(R.id.listView);
         noticeList=new ArrayList<Notice>();
@@ -71,17 +72,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        new BackGroundTask().execute();
+      //new BackGroundTask().execute();
     }
 
     class BackGroundTask extends AsyncTask<Void,Void,String> {
 
         String target;
-        final EditText idText= (EditText)findViewById(R.id.idText);
-        final String id=idText.getText().toString();
+        EditText idText= (EditText)findViewById(R.id.idText);
+        String id=idText.getText().toString();
 
         protected void onPreExecute() {
-            target = "http://183.101.242.171/web/NoticeList.php";
+            try {
+                target = "http://183.101.242.171/web/NoticeList.php?id="+ URLEncoder.encode(id,"UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
@@ -105,16 +110,13 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         }
-
+/*
         public void onProgressUpdate(Void... values) {
             super.onProgressUpdate();
         }
 
-        public void onPostExecute(final String result) {
-                Response.Listener<String> responseListener;
-            responseListener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
+        public void onPostExecute(String result) {
+
                 try {
                     JSONObject jsonObject = new JSONObject(result);
                     JSONArray jsonArray = jsonObject.getJSONArray("response");
@@ -123,20 +125,16 @@ public class MainActivity extends AppCompatActivity {
                     while (count < jsonArray.length()) {
                         JSONObject object = jsonArray.getJSONObject(count);
                         address = object.getString("address");
-                        item = object.getString("name");
-                        Notice notice = new Notice(address, item);
+                        item = object.getString("item");
+                        Notice notice = new Notice(address,item);
                         noticeList.add(notice);
+                        Adapter.notifyDataSetChanged();
                         count++;
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-            }
-        };
-            NoticeRequest noticeRequest = new NoticeRequest(id, responseListener);
-            RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-            queue.add(noticeRequest);
+            }*/
         }
-    }
 }
