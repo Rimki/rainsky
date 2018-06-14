@@ -33,7 +33,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     private ListView noticeListView;
-    private NoticeListAdapter Adapter;
+    private NoticeListAdapter adapter;
     private List<Notice> noticeList;
 
     @Override
@@ -41,11 +41,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         noticeListView = (ListView) findViewById(R.id.listView);
         noticeList=new ArrayList<Notice>();
-        Adapter=new NoticeListAdapter(getApplicationContext(),noticeList);
-        noticeListView.setAdapter(Adapter);
+        adapter=new NoticeListAdapter(getApplicationContext(),noticeList);
+        noticeListView.setAdapter(adapter);
 
         final Button sortButton=(Button) findViewById(R.id.sortButton);
         final Button editButton=(Button) findViewById(R.id.editButton);
@@ -72,21 +71,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-      //new BackGroundTask().execute();
+     new BackGroundTask().execute();
     }
 
     class BackGroundTask extends AsyncTask<Void,Void,String> {
 
         String target;
-        EditText idText= (EditText)findViewById(R.id.idText);
-        String id=idText.getText().toString();
 
+        @Override
         protected void onPreExecute() {
-            try {
-                target = "http://183.101.242.171/web/NoticeList.php?id="+ URLEncoder.encode(id,"UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
+
+                target = "http://183.101.242.171/web/NoticeList.php";
+
         }
 
         @Override
@@ -108,13 +104,13 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return null;
+           return null;
         }
-/*
+        @Override
         public void onProgressUpdate(Void... values) {
             super.onProgressUpdate();
         }
-
+        @Override
         public void onPostExecute(String result) {
 
                 try {
@@ -128,13 +124,14 @@ public class MainActivity extends AppCompatActivity {
                         item = object.getString("item");
                         Notice notice = new Notice(address,item);
                         noticeList.add(notice);
-                        Adapter.notifyDataSetChanged();
+                      noticeListView.setAdapter(adapter);
+                       adapter.notifyDataSetChanged();
                         count++;
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-            }*/
+            }
         }
 }
