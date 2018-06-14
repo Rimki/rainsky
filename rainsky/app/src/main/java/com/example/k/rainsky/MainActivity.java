@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
 
-                target = "http://183.101.242.171/web/NoticeList.php";
+                target = "http://multipledestination.online/web/NoticeList.php";
 
         }
 
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                String temp;
+                String temp =null;
                 StringBuilder stringBuilder = new StringBuilder();
                 while ((temp = bufferedReader.readLine()) != null) {
                     stringBuilder.append(temp + "\n");
@@ -124,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
                         item = object.getString("item");
                         Notice notice = new Notice(address,item);
                         noticeList.add(notice);
-                      noticeListView.setAdapter(adapter);
                        adapter.notifyDataSetChanged();
                         count++;
                     }
