@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                                         .create();
                                 dialog.show();
                                 Intent intent= new Intent(LoginActivity.this,MainActivity.class);
+                                intent.putExtra("id",id);
                                 LoginActivity.this.startActivity(intent);
                                 finish();
                             }

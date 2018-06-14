@@ -36,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
     private NoticeListAdapter adapter;
     private List<Notice> noticeList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         noticeListView = (ListView) findViewById(R.id.listView);
         noticeList=new ArrayList<Notice>();
         adapter=new NoticeListAdapter(getApplicationContext(),noticeList);
@@ -77,11 +77,16 @@ public class MainActivity extends AppCompatActivity {
     class BackGroundTask extends AsyncTask<Void,Void,String> {
 
         String target;
-
+        Intent intent = getIntent();
+       String id=intent.getStringExtra("id");
         @Override
         protected void onPreExecute() {
 
-                target = "http://multipledestination.online/web/NoticeList.php";
+            try {
+                target = "http://multipledestination.online/web/NoticeList.php?id=" + URLEncoder.encode(id, "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
 
         }
 
@@ -100,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
-                return stringBuilder.toString().trim();
+                return stringBuilder.toString();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -112,10 +117,11 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         public void onPostExecute(String result) {
-
+            super.onPostExecute(result);
                 try {
-                    JSONObject jsonObject = new JSONObject(result);
-                    JSONArray jsonArray = jsonObject.getJSONArray("response");
+
+                    JSONObject jo = new JSONObject(result);
+                    JSONArray jsonArray = jo.getJSONArray("response");
                     int count = 0;
                     String address, item;
                     while (count < jsonArray.length()) {
@@ -124,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                         item = object.getString("item");
                         Notice notice = new Notice(address,item);
                         noticeList.add(notice);
-                       adapter.notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
                         count++;
                     }
                 } catch (Exception e) {
