@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#afeeee">
+
+    <TextView
+        android:drawableStart="@drawable/ic_live_help_black_24dp"
+        android:drawableLeft="@drawable/ic_live_help_black_24dp"
+        android:text=" 어플리케이션 정보"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:padding="5dp"
+        android:textSize="17dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+
+        />
+    <TextView
+        android:drawableStart="@drawable/ic_build_black_24dp"
+        android:drawableLeft="@drawable/ic_build_black_24dp"
+        android:text= " 어플리케이션 버전 : 0.1 Ver"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:padding="5dp"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:background="@color/colorPrimary"
+
+        />
+    <TextView
+        android:drawableStart="@drawable/ic_security_black_24dp"
+        android:drawableLeft="@drawable/ic_security_black_24dp"
+        android:text=" 개발자 : 김기훈, 은원기, 이호신, 최원준"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:padding="5dp"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:background="@color/colorPrimary"/>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginLeft="20dp"
+       android:layout_marginRight="20dp"
+       android:layout_marginBottom="15dp"
+       android:orientation="vertical">
+       <TextView
+           android:drawableStart="@drawable/ic_assignment_ind_black_24dp"
+           android:drawableLeft="@drawable/ic_assignment_ind_black_24dp"
+           android:text=" 개발자소개"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textColor="@color/colorWhite"
+           android:padding="5dp"
+           android:textSize="17dp"
+           android:textStyle="bold"
+           android:background="@color/colorPrimary"/>
+       <ScrollView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:isScrollContainer="true">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="김기훈 : 안드로이드 "
+                            android:textStyle="bold"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="17dp"
+
+                            />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="컴퓨터학부 13학번"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:textSize="15dp"
+
+                            />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="yhs693@naver.com"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:textSize="15dp"
+
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_marginTop="20dp"
+                   android:layout_marginLeft="20dp"
+                   android:layout_marginRight="20dp"
+                   android:layout_marginBottom="15dp"
+                   android:orientation="horizontal">
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginLeft="10dp"
+                       android:orientation="vertical">
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="은원기 : 서버"
+                           android:textStyle="bold"
+                           android:textColor="@color/colorPrimaryDark"
+                           android:textSize="17dp"
+
+                           />
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="컴퓨터학부 13학번"
+                           android:textStyle="bold"
+                           android:textColor="#000000"
+                           android:textSize="15dp"
+
+                           />
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="yony1995@naver.com"
+                           android:textStyle="bold"
+                           android:textColor="#000000"
+                           android:textSize="15dp"
+
+                           />
+                   </LinearLayout>
+               </LinearLayout>
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_marginTop="20dp"
+                   android:layout_marginLeft="20dp"
+                   android:layout_marginRight="20dp"
+                   android:layout_marginBottom="15dp"
+                   android:orientation="horizontal">
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginLeft="10dp"
+                       android:orientation="vertical">
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="이호신 : 빅데이터"
+                           android:textStyle="bold"
+                           android:textColor="@color/colorPrimaryDark"
+                           android:textSize="17dp"
+
+                           />
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="컴퓨터학부 13학번"
+                           android:textStyle="bold"
+                           android:textColor="#000000"
+                           android:textSize="15dp"
+
+                           />
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="lle21cen@naver.com"
+                           android:textStyle="bold"
+                           android:textColor="#000000"
+                           android:textSize="15dp"
+
+                           />
+                   </LinearLayout>
+               </LinearLayout>
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_marginTop="20dp"
+                   android:layout_marginLeft="20dp"
+                   android:layout_marginRight="20dp"
+                   android:layout_marginBottom="15dp"
+                   android:orientation="horizontal">
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginLeft="10dp"
+                       android:orientation="vertical">
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="최원준 : 웹페이지"
+                           android:textStyle="bold"
+                           android:textColor="@color/colorPrimaryDark"
+                           android:textSize="17dp"
+
+                           />
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="컴퓨터학부 13학번"
+                           android:textStyle="bold"
+                           android:textColor="#000000"
+                           android:textSize="15dp"
+
+                           />
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="fkrmkk@naver.com"
+                           android:textStyle="bold"
+                           android:textColor="#000000"
+                           android:textSize="15dp"
+
+                           />
+                   </LinearLayout>
+               </LinearLayout>
+           </LinearLayout>
+       </ScrollView>
+   </LinearLayout>
+</LinearLayout>

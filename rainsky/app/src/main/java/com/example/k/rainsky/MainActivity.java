@@ -2,11 +2,18 @@ package com.example.k.rainsky;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Parcelable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+
+
+import com.skt.Tmap.TMapTapi;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,6 +21,7 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -21,12 +29,11 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Serializable {
 
     private ListView noticeListView;
     private NoticeListAdapter adapter;
-    private List<Notice> noticeList;
-
+    private ArrayList<Notice> noticeList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,19 +53,39 @@ public class MainActivity extends AppCompatActivity {
         sortButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                sortButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                editButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                naviButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             }
         });
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                sortButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                editButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                naviButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             }
         });
         naviButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
+                sortButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                editButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                naviButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+              //Intent intent= new Intent(this,NaviFragment.class);
+               // intent.putExtra("noticeList", (Parcelable) noticeList);
+               // MainActivity.this.startActivity(intent);
+                NaviFragment list=new NaviFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("noticeList", String.valueOf(noticeList)); // key , value
+                list.setArguments(bundle);
+
+                FragmentManager fragmentManager =getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment,new NaviFragment());
+                fragmentTransaction.commit();
             }
         });
 

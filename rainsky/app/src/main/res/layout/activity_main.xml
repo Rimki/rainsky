@@ -15,9 +15,24 @@
         android:dividerHeight="10dp"
         android:divider="@color/colorWhite"
         >
-
-
     </ListView>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/notice">
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fragment">
+
+        </RelativeLayout>
+    </FrameLayout>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -69,4 +84,5 @@
         />
 
 </LinearLayout>
+
 </RelativeLayout>
