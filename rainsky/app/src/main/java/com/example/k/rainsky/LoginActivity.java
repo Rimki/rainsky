@@ -17,6 +17,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import static java.lang.Thread.sleep;
+
 public class LoginActivity extends AppCompatActivity {
 
     private AlertDialog dialog;
@@ -55,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                                         .setPositiveButton("확인",null)
                                         .create();
                                 dialog.show();
+
                                 Intent intent= new Intent(LoginActivity.this,MainActivity.class);
                                 intent.putExtra("id",id);
                                 LoginActivity.this.startActivity(intent);

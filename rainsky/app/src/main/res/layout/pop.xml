@@ -43,7 +43,7 @@
     <TextView
         android:drawableStart="@drawable/ic_security_black_24dp"
         android:drawableLeft="@drawable/ic_security_black_24dp"
-        android:text=" 개발자 : 김기훈, 은원기, 이호신, 최원준"
+        android:text=" 개발자 :  Team Rainsky"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"

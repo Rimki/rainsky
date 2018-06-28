@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="어플 이름"
+            android:text="스마트 커리어"
             android:textColor="@color/colorWhite"
             android:textSize="25dp"
             android:textStyle="bold"
