@@ -43,5 +43,6 @@ public class NoticeListAdapter extends BaseAdapter {
         itemText.setText(noticeList.get(i).getItemname());
         v.setTag(noticeList.get(i).getAddress());
         return v;
+
     }
 }
